@@ -3,6 +3,10 @@ import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_meta.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
+import 'package:pdm_projeto_pesquisa/routers/pages.dart';
+import 'package:get/get.dart';
+
+
 
 class MetasPage extends StatelessWidget {
   const MetasPage({super.key});
@@ -53,7 +57,7 @@ class MetasPage extends StatelessWidget {
                   CustomElevatedButton(
                     text: 'Nova Meta',
                     onPressed: () {
-                      // Get.toNamed(Routes.HOME);
+                      Get.toNamed(Routes.CREATE_META);
                       debugPrint('entrar pressionado');
                     },
                   ),
