@@ -6,8 +6,6 @@ import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:get/get.dart';
 
-
-
 class MetasPage extends StatelessWidget {
   const MetasPage({super.key});
 
