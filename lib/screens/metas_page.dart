@@ -30,7 +30,7 @@ class MetasPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CardMeta(
-                    title: 'Pesquisa em laboratório',
+                    title: 'Pesquisa em laboratório.',
                     deadline: '01/12/2025',
                     progressValue: 0,
                     onTap: () {
