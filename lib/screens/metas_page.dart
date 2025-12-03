@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
+import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_meta.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
@@ -29,9 +30,17 @@ class MetasPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CardAviso(
+                    mensagem: 'A meta vence em 4 dias !!',
+                      width: 400,
+                      height: 150,
+                  ),
+                  const SizedBox(height: 30),
                   CardMeta(
                     title: 'Pesquisa em laboratório.',
                     deadline: '01/12/2025',
+                    width: 400,
+                    height: 150,
                     progressValue: 0,
                     onTap: () {
                       // Lógica de navegação ou ação ao clicar no card
@@ -41,15 +50,16 @@ class MetasPage extends StatelessWidget {
                   const SizedBox(height: 30),
                   CardMeta(
                     title: 'Coleta de amostra',
-                    deadline: '01/10/2025',
+                    deadline: '01/12/2025',
+                    width: 400,
+                    height: 150,
                     progressValue: 0,
                     onTap: () {
                       // Lógica de navegação ou ação ao clicar no card
                       print('Abrir detalhes da meta...');
                     },
                   ),
-
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 90),
 
                   // Botão de login
                   CustomElevatedButton(

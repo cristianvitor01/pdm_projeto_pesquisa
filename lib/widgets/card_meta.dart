@@ -6,27 +6,37 @@ class CardMeta extends StatelessWidget {
   final String deadline;
   final double progressValue;
   final VoidCallback? onTap;
+  final double? width;
+  final double? height;
+  final EdgeInsets padding;
+  final BorderRadius borderRadius;
 
   const CardMeta({
-    Key? key,
+    super.key,
     required this.title,
     required this.deadline,
     required this.progressValue,
     this.onTap,
-  }) : super(key: key);
+    this.width,
+    this.height,
+    this.padding = const EdgeInsets.all(16.0),
+    this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: borderRadius,
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: borderRadius,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
+        child: Container(
+          width: width,
+          height: height,
+          padding: padding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,

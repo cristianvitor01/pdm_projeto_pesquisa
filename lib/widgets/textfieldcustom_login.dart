@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFieldLogin extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;
   final TextInputType keyboardType;
@@ -10,7 +10,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon; 
   final bool enabled;
 
-  const CustomTextField({
+  const CustomTextFieldLogin({
     Key? key,
     required this.hintText,
     this.controller,
@@ -30,18 +30,29 @@ class CustomTextField extends StatelessWidget {
       style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         hintText: hintText,
-        suffixIcon: suffixIcon,
+        filled: true,
+        fillColor: AppColors.white2,
+        suffixIcon: suffixIcon, 
+
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.gray3, width: 1),
+          borderSide: BorderSide.none,
         ),
+
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.gray3, width: 1),
+          borderSide: const BorderSide(
+            color: Color.fromARGB(0, 145, 154, 173), 
+            width: 1,
+          ),
         ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.green, width: 2),
+          borderSide: const BorderSide(
+            color: AppColors.green,
+            width: 2,
+          ),
         ),
       ),
     );

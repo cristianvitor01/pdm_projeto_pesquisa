@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart';
 
 
 class CreateAccount extends StatelessWidget {
@@ -39,7 +39,7 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 30),
 
                   // Campo de e-mail
-                  CustomTextField(
+                  CustomTextFieldLogin(
                     hintText: 'Nome',
                     keyboardType: TextInputType.text,
                   ),
@@ -47,7 +47,7 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Campo de senha
-                  CustomTextField(
+                  CustomTextFieldLogin(
                     hintText: 'Matrícula',
                     keyboardType: TextInputType.text,
                   ),
@@ -55,7 +55,7 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Campo de e-mail
-                  CustomTextField(
+                  CustomTextFieldLogin(
                     hintText: 'E-mail',
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -63,7 +63,7 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Campo de senha
-                  CustomTextField(
+                  CustomTextFieldLogin(
                     hintText: 'Senha',
                     keyboardType: TextInputType.visiblePassword,
                   ),
@@ -71,7 +71,7 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Campo de cofirmar senha
-                  CustomTextField(
+                  CustomTextFieldLogin(
                     hintText: 'Confirmar senha',
                     keyboardType: TextInputType.text,
                   ),
