@@ -13,7 +13,7 @@ class MetasSemanais extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Metas', style: TextStyle(color: AppColors.white)),
+        title: const Text('Metas semanais', style: TextStyle(color: AppColors.white)),
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),

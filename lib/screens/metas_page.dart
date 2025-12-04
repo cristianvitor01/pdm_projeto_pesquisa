@@ -33,7 +33,7 @@ class MetasPage extends StatelessWidget {
                   CardAviso(
                     mensagem: 'A meta vence em 4 dias !!',
                       width: 400,
-                      height: 150,
+                      height: 100,
                   ),
                   const SizedBox(height: 30),
                   CardMeta(

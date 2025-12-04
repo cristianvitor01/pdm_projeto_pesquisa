@@ -47,7 +47,7 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Metas semanais'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.HOME);
+                Get.toNamed(Routes.WEEK_META);
               },
             ),
 
