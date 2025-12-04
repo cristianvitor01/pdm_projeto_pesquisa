@@ -6,4 +6,7 @@ abstract class Routes {
   static const CREATE_ACCOUNT = '/create_account';
   static const CREATE_META = '/create_meta';
   static const WEEK_META = '/metas_semanais';
+  static const FORMULARIO_COLETA = '/formulario_coleta';
+  static const NOVO_FORMULARIO = '/novo_formulario';
+  static const HISTORICO_FORMULARIOS = '/historico_formularios';
 }

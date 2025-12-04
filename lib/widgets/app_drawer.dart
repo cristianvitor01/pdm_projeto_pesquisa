@@ -73,7 +73,7 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Formulário de Coleta'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.CREATE_ACCOUNT);
+                Get.toNamed(Routes.FORMULARIO_COLETA);
               },
             ),
             ListTile(
