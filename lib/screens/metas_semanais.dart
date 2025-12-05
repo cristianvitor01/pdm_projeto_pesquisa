@@ -31,7 +31,7 @@ class MetasSemanais extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
                   CardMeta(
-                    title: 'Pesquisa em laboratório.',
+                    title: 'Pesquisa em laboratório',
                     deadline: '01/12/2025',
                     width: 400,
                     height: 150,

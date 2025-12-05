@@ -56,7 +56,8 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Check-In'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.CREATE_ACCOUNT);
+                Get.toNamed(Routes.CHECK_IN);
+                debugPrint('create check pressionado');
               },
             ),
 
@@ -65,7 +66,7 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Check-Out'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.CREATE_ACCOUNT);
+                Get.toNamed(Routes.CHECK_OUT);
               },
             ),
             ListTile(

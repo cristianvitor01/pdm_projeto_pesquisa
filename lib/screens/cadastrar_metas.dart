@@ -32,32 +32,32 @@ class CadastrarMetas extends StatelessWidget {
                     hintText: 'Nome da Meta',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     hintText: 'Projeto',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     hintText: 'Carga horária da meta',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     hintText: 'Período da Meta',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     hintText: 'Descrição da meta',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   CustomTextField(
                     hintText: 'Resultados Esperados',
                     keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
 
                   // Botão de login
                   CustomElevatedButton(

@@ -9,4 +9,8 @@ abstract class Routes {
   static const FORMULARIO_COLETA = '/formulario_coleta';
   static const NOVO_FORMULARIO = '/novo_formulario';
   static const HISTORICO_FORMULARIOS = '/historico_formularios';
+  static const CHECK_IN = '/check_in';
+  static const CREATE_CHECK_IN = '/create_check_in';
+  static const CHECK_OUT = '/check_out';
+  static const REALIZAR_CHECK_OUT = '/realizar_check_out';
 }

@@ -8,6 +8,7 @@ class CardAviso extends StatelessWidget {
   final EdgeInsets padding;
   final BorderRadius borderRadius;
   final TextAlign textAlign;
+  final Color? color;
 
   const CardAviso({
     super.key,
@@ -17,6 +18,7 @@ class CardAviso extends StatelessWidget {
     this.padding = const EdgeInsets.all(16.0),
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.textAlign = TextAlign.center,
+    this.color,
   });
 
   @override
@@ -26,7 +28,7 @@ class CardAviso extends StatelessWidget {
       height: height,
       padding: padding,
       decoration: BoxDecoration(
-        color: AppColors.orange,
+      color: color ?? AppColors.orange,
         borderRadius: borderRadius,
       ),
       child: Center(

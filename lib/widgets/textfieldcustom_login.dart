@@ -8,6 +8,7 @@ class CustomTextFieldLogin extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final Widget? suffixIcon; 
+  final Widget? prefixIcon;
   final bool enabled;
 
   const CustomTextFieldLogin({
@@ -17,6 +18,7 @@ class CustomTextFieldLogin extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.suffixIcon,
+    this.prefixIcon,
     this.enabled = true,
   }) : super(key: key);
 
@@ -33,6 +35,7 @@ class CustomTextFieldLogin extends StatelessWidget {
         filled: true,
         fillColor: AppColors.white2,
         suffixIcon: suffixIcon, 
+        prefixIcon: prefixIcon,
 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
