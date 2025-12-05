@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart';
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
-import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
+
 
 class CreateCheckIn extends StatelessWidget {
   const CreateCheckIn ({super.key});
@@ -36,20 +36,20 @@ class CreateCheckIn extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Nome da Atividade",
                 keyboardType: TextInputType.none,
               ),
               const SizedBox(height: 20),
 
 
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Meta Relacionda",
                 keyboardType: TextInputType.none,
               ),
               const SizedBox(height: 20),
 
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Localização",
                 keyboardType: TextInputType.none,
                 prefixIcon: Icon(Icons.location_on, color: AppColors.green),
