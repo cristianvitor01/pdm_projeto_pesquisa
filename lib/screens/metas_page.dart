@@ -43,8 +43,7 @@ class MetasPage extends StatelessWidget {
                     height: 150,
                     progressValue: 0,
                     onTap: () {
-                      // Lógica de navegação ou ação ao clicar no card
-                      print('Abrir detalhes da meta...');
+                      Get.toNamed(Routes.META_PAGE);
                     },
                   ),
                   const SizedBox(height: 30),
