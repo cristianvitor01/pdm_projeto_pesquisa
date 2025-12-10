@@ -13,7 +13,7 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF), 
+        color: AppColors.white, 
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.grey.shade400,

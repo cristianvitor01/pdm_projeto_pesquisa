@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: () {
-                          Get.toNamed(Routes.CREATE_ACCOUNT); // CORRIGIDO
+                          Get.toNamed(Routes.CREATE_ACCOUNT);
                           print('criar conta');
                         },
                         child: const Text(

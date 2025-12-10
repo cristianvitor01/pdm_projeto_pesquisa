@@ -53,7 +53,6 @@ class CadastrarProjeto extends StatelessWidget {
                   CustomElevatedButton(
                     text: 'Salvar Meta',
                     onPressed: () {
-                      // Get.toNamed(Routes.HOME);
                       debugPrint('entrar pressionado');
                     },
                   ),

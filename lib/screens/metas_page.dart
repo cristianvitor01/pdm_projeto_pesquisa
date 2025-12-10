@@ -34,7 +34,7 @@ class MetasPage extends StatelessWidget {
                   CardAviso(
                     mensagem: 'A meta vence em 4 dias !!',
                       width: 400,
-                      height: 100,
+                      height: 80,
                   ),
                   const SizedBox(height: 30),
                   CardMeta(
@@ -59,7 +59,7 @@ class MetasPage extends StatelessWidget {
                       print('Abrir detalhes da meta...');
                     },
                   ),
-                  const SizedBox(height: 90),
+                  const SizedBox(height: 20),
 
                   // Botão de login
                   CustomElevatedButton(

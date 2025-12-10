@@ -21,7 +21,7 @@ class HistoricoFormulariosPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
 
         children: [
-          // ---- Exemplo de um formulário antigo ----
+          const SizedBox(height: 250),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             margin: const EdgeInsets.only(bottom: 20),

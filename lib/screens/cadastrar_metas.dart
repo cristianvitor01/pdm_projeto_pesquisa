@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
@@ -63,7 +65,7 @@ class CadastrarMetas extends StatelessWidget {
                   CustomElevatedButton(
                     text: 'Salvar Meta',
                     onPressed: () {
-                      // Get.toNamed(Routes.HOME);
+                      Get.toNamed(Routes.HOME);
                       debugPrint('entrar pressionado');
                     },
                   ),

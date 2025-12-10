@@ -29,7 +29,7 @@ class CardMeta extends StatelessWidget {
       onTap: onTap,
       borderRadius: borderRadius,
       child: Card(
-        elevation: 0,
+        elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,
         ),
