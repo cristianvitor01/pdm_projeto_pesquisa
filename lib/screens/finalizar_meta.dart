@@ -5,8 +5,8 @@ import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:get/get.dart';
 
-class MetaInDepthPage extends StatelessWidget {
-  const MetaInDepthPage({super.key});
+class FinalizarMeta extends StatelessWidget {
+  const FinalizarMeta({super.key});
 
   Widget _infoBox(Color color, String text, {double height = 60}) {
     return Container(
@@ -32,7 +32,6 @@ class MetaInDepthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color softBlueGrey = const Color(0xFFD8E2FF).withOpacity(0.5);
 
     return Scaffold(
       appBar: AppBar(
@@ -53,11 +52,11 @@ class MetaInDepthPage extends StatelessWidget {
               "Em Andamento",
             ),
             _infoBox(
-              softBlueGrey,
+              AppColors.lightBlueGray,
               "Data de Vencimento: 01/12/2025",
             ),
             _infoBox(
-              softBlueGrey,
+              AppColors.lightBlueGray,
               "Anexar Relatório DOCX",
               height: 120, 
             ),
@@ -99,7 +98,9 @@ class MetaInDepthPage extends StatelessWidget {
               height: 55,
               child: CustomElevatedButton(
                 text: "Finalizar Meta",
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.HOME);
+                },
               ),
             )
           ],

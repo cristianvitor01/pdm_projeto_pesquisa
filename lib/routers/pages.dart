@@ -11,8 +11,8 @@ import 'package:pdm_projeto_pesquisa/screens/realizar_check_out.dart';
 import 'package:pdm_projeto_pesquisa/screens/formulario_de_coleta.dart';
 import 'package:pdm_projeto_pesquisa/screens/novo_formulario.dart';
 import 'package:pdm_projeto_pesquisa/screens/historico_formularios.dart';
-import 'package:pdm_projeto_pesquisa/screens/meta_page.dart';
-import 'package:pdm_projeto_pesquisa/screens/meta_in_depth.dart';
+import 'package:pdm_projeto_pesquisa/screens/detalhes_da_meta.dart';
+import 'package:pdm_projeto_pesquisa/screens/finalizar_meta.dart';
 import 'package:pdm_projeto_pesquisa/screens/meta_historico.dart';
 import 'package:pdm_projeto_pesquisa/screens/meta_historico_in_depth.dart';
 part 'routers.dart';
@@ -31,8 +31,8 @@ class AppPages {
     GetPage(name: Routes.CREATE_CHECK_IN, page: () => const CreateCheckIn()),
     GetPage(name: Routes.CHECK_OUT, page: () => const CheckOut()),
     GetPage(name: Routes.REALIZAR_CHECK_OUT, page: () => const RealizarCheckOut()),
-    GetPage(name: Routes.META_PAGE, page: () => const MetaPage()),
-    GetPage(name: Routes.META_IN_DEPTH, page: () => const MetaInDepthPage()),
+    GetPage(name: Routes.FINALIZAR_META, page: () => const FinalizarMeta()),
+    GetPage(name: Routes.DETALHES_DA_META, page: () => const DetalhesDaMeta()),
     GetPage(name: Routes.META_HISTORICO, page: () => const MetaHistoricoPage()),
     GetPage(name: Routes.META_HISTORICO_IN_DEPTH, page: () => const MetaHistoricoInDepthPage()),
   ];

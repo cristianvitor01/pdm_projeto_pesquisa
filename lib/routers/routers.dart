@@ -13,8 +13,8 @@ abstract class Routes {
   static const CREATE_CHECK_IN = '/create_check_in';
   static const CHECK_OUT = '/check_out';
   static const REALIZAR_CHECK_OUT = '/realizar_check_out';
-  static const META_PAGE = '/meta_page';
-  static const META_IN_DEPTH = '/meta_in_depth';
+  static const FINALIZAR_META = '/finalizar_meta';
+  static const DETALHES_DA_META = '/detalhes_da_meta';
   static const META_HISTORICO = '/meta_historico';
   static const META_HISTORICO_IN_DEPTH = '/meta_historico_in_depth';
 }

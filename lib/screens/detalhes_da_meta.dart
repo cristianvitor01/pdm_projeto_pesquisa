@@ -5,8 +5,8 @@ import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
-class MetaPage extends StatelessWidget {
-  const MetaPage({super.key});
+class DetalhesDaMeta extends StatelessWidget {
+  const DetalhesDaMeta ({super.key});
 
   Widget _section(String title, String content) {
     return Column(
@@ -38,7 +38,7 @@ class MetaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Meta',
+          'Detalhes da Meta',
           style: TextStyle(color: AppColors.white),
         ),
         backgroundColor: AppColors.green,
@@ -65,7 +65,7 @@ class MetaPage extends StatelessWidget {
         child: CustomElevatedButton(
           text: "Finalizar Meta",
           onPressed: () {
-            Get.toNamed(Routes.META_IN_DEPTH);
+            Get.toNamed(Routes.FINALIZAR_META);
           },
         ),
       ),

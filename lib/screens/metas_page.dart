@@ -5,6 +5,7 @@ import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_meta.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
+
 import 'package:get/get.dart';
 
 class MetasPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class MetasPage extends StatelessWidget {
                     height: 150,
                     progressValue: 0,
                     onTap: () {
-                      Get.toNamed(Routes.META_PAGE);
+                      Get.toNamed(Routes.DETALHES_DA_META);
                     },
                   ),
                   const SizedBox(height: 30),
