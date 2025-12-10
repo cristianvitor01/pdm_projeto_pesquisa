@@ -35,7 +35,7 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Detalhes do Histórico',
+          'Histórico da Meta',
           style: TextStyle(color: AppColors.white),
         ),
         backgroundColor: AppColors.green,
@@ -48,14 +48,6 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Histórico da meta",
-              style: TextStyle(
-                color: AppColors.green,
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
 
             const SizedBox(height: 30),
 
