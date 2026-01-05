@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart';
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
 class NovoFormularioPage extends StatelessWidget {
@@ -31,37 +31,42 @@ class NovoFormularioPage extends StatelessWidget {
               const SizedBox(height: 10),
 
               // Equipe
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Equipe:",
                 keyboardType: TextInputType.text,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 
               // Data de coleta
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Data de Coleta:",
                 keyboardType: TextInputType.datetime,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 
               // Localização
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Localização:",
                 keyboardType: TextInputType.text,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 
               // Ponto de Referência
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Ponto de Referência:",
                 keyboardType: TextInputType.text,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 
               // Observações
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Observações Pontuais:",
                 keyboardType: TextInputType.text,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 

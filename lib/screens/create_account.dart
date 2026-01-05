@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart';
-
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 
 class CreateAccount extends StatelessWidget {
   const CreateAccount({super.key});
@@ -39,41 +38,46 @@ class CreateAccount extends StatelessWidget {
                   const SizedBox(height: 30),
 
                   // Campo de e-mail
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Nome',
                     keyboardType: TextInputType.text,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),
 
                   // Campo de senha
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Matrícula',
                     keyboardType: TextInputType.text,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),
 
                   // Campo de e-mail
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'E-mail',
                     keyboardType: TextInputType.emailAddress,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),
 
                   // Campo de senha
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Senha',
                     keyboardType: TextInputType.visiblePassword,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),
 
                   // Campo de cofirmar senha
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Confirmar senha',
                     keyboardType: TextInputType.text,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),

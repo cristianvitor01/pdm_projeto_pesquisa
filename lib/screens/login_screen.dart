@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart'; // CORRIGIDO
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart'; // CORRIGIDO
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -38,17 +38,19 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 30),
 
                   // Campo de matrícula
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Matrícula',
                     keyboardType: TextInputType.text,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),
 
                   // Campo de senha
-                  CustomTextFieldLogin(
+                  CustomTextField(
                     hintText: 'Senha',
                     keyboardType: TextInputType.visiblePassword,
+                    isLoginStyle: true,
                   ),
 
                   const SizedBox(height: 20),

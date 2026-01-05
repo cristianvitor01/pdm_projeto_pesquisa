@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom_login.dart';
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
 
@@ -42,16 +42,18 @@ class RealizarCheckOut extends StatelessWidget {
               const SizedBox(height: 10),
 
               // Nome da meta
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Pesquisa",
                 keyboardType: TextInputType.none,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 
               //Meta relacionada
-              CustomTextFieldLogin(
+              CustomTextField(
                 hintText: "Pesquisa em Laboratório",
                 keyboardType: TextInputType.none,
+                isLoginStyle: true,
               ),
               const SizedBox(height: 20),
 

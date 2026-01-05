@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 
-
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;
   final TextInputType keyboardType;
   final bool obscureText;
-  final Widget? suffixIcon; 
+  final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool enabled;
+  final bool isLoginStyle;
 
   const CustomTextField({
     Key? key,
@@ -20,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.enabled = true,
+    this.isLoginStyle = false, // ← novo parâmetro
   }) : super(key: key);
 
   @override
@@ -32,19 +33,36 @@ class CustomTextField extends StatelessWidget {
       style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         hintText: hintText,
-        suffixIcon: suffixIcon,
+
+        // ===== Ícones =====
         prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+
+        // ===== Estilo Login =====
+        filled: isLoginStyle,
+        fillColor: isLoginStyle ? AppColors.white2 : null,
+
+        // ===== Bordas =====
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.gray3, width: 1),
+          borderSide: isLoginStyle
+              ? BorderSide.none
+              : const BorderSide(color: AppColors.gray3, width: 1),
         ),
+
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.gray3, width: 1),
+          borderSide: isLoginStyle
+              ? BorderSide.none
+              : const BorderSide(color: AppColors.gray3, width: 1),
         ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.green, width: 2),
+          borderSide: const BorderSide(
+            color: AppColors.green,
+            width: 2,
+          ),
         ),
       ),
     );
