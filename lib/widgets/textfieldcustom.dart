@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.enabled = true,
-    this.isLoginStyle = false, // ← novo parâmetro
+    this.isLoginStyle = false, // novo parâmetro
   }) : super(key: key);
 
   @override
@@ -34,15 +34,12 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
 
-        // ===== Ícones =====
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
 
-        // ===== Estilo Login =====
         filled: isLoginStyle,
         fillColor: isLoginStyle ? AppColors.white2 : null,
-
-        // ===== Bordas =====
+        
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: isLoginStyle
