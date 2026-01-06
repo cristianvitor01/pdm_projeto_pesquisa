@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:pdm_projeto_pesquisa/controllers/metas_controller.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
@@ -6,10 +9,10 @@ import 'package:pdm_projeto_pesquisa/widgets/card_meta.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
-import 'package:get/get.dart';
-
 class MetasPage extends StatelessWidget {
-  const MetasPage({super.key});
+  MetasPage({super.key});
+
+  final MetasController controller = Get.put(MetasController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,62 +22,70 @@ class MetasPage extends StatelessWidget {
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),
-      body: SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height,
-          ),
-          child: IntrinsicHeight(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CardAviso(
-                    mensagem: 'A meta vence em 4 dias !!',
-                      width: 400,
-                      height: 80,
-                  ),
-                  const SizedBox(height: 30),
-                  CardMeta(
-                    title: 'Pesquisa em laboratório.',
-                    deadline: '01/12/2025',
-                    width: 400,
-                    height: 150,
-                    progressValue: 0,
-                    onTap: () {
-                      Get.toNamed(Routes.DETALHES_DA_META);
-                    },
-                  ),
-                  const SizedBox(height: 30),
-                  CardMeta(
-                    title: 'Coleta de amostra',
-                    deadline: '01/12/2025',
-                    width: 400,
-                    height: 150,
-                    progressValue: 0,
-                    onTap: () {
-                      // Lógica de navegação ou ação ao clicar no card
-                      print('Abrir detalhes da meta...');
-                    },
-                  ),
-                  const SizedBox(height: 20),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
 
-                  // Botão de login
-                  CustomElevatedButton(
-                    text: 'Nova Meta',
-                    onPressed: () {
-                      Get.toNamed(Routes.CREATE_META);
-                      debugPrint('entrar pressionado');
-                    },
-                  ),
-
-                  const SizedBox(height: 30),
-                ],
-              ),
+            CardAviso(
+              mensagem: 'Acompanhe suas metas cadastradas',
+              width: 400,
+              height: 80,
             ),
-          ),
+
+            const SizedBox(height: 30),
+
+            //LISTA REATIVA DE METAS
+            Expanded(
+              child: Obx(() {
+                if (controller.metas.isEmpty) {
+                  return const Center(
+                    child: Text('Nenhuma meta cadastrada'),
+                  );
+                }
+
+                return ListView.builder(
+                  itemCount: controller.metas.length,
+                  itemBuilder: (context, index) {
+                    final meta = controller.metas[index];
+
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: CardMeta(
+                        title: meta.nome,
+                        deadline: meta.periodo,
+                        width: 400,
+                        height: 150,
+                        progressValue: 0,
+                        onTap: () {
+                          Get.toNamed(
+                            Routes.DETALHES_DA_META,
+                            arguments: meta,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
+
+            const SizedBox(height: 10),
+
+            CustomElevatedButton(
+              text: 'Nova Meta',
+              onPressed: () {
+                Get.toNamed(
+                  Routes.CREATE_META,
+                  arguments: false,
+                );
+              },
+            ),
+
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

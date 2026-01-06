@@ -20,7 +20,7 @@ part 'routers.dart';
 class AppPages {
   static final List<GetPage> pages = [
     GetPage(name: Routes.INITIAL, page: () => LoginScreen()),
-    GetPage(name: Routes.HOME, page: () => const MetasPage()),
+    GetPage(name: Routes.HOME, page: () => MetasPage()),
     GetPage(name: Routes.CREATE_ACCOUNT, page: () => CreateAccount()),
     GetPage(name: Routes.CREATE_META, page: () => CadastrarMetas()),
     GetPage(name: Routes.WEEK_META, page: () => MetasSemanais()),
@@ -32,7 +32,7 @@ class AppPages {
     GetPage(name: Routes.CHECK_OUT, page: () => const CheckOut()),
     GetPage(name: Routes.REALIZAR_CHECK_OUT, page: () => const RealizarCheckOut()),
     GetPage(name: Routes.FINALIZAR_META, page: () => const FinalizarMeta()),
-    GetPage(name: Routes.DETALHES_DA_META, page: () => const DetalhesDaMeta()),
+    GetPage(name: Routes.DETALHES_DA_META, page: () => DetalhesDaMeta()),
     GetPage(name: Routes.META_HISTORICO, page: () => const MetaHistoricoPage()),
     GetPage(name: Routes.META_HISTORICO_IN_DEPTH, page: () => const MetaHistoricoInDepthPage()),
   ];

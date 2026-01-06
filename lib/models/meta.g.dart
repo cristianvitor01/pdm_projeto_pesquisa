@@ -19,29 +19,32 @@ class MetaAdapter extends TypeAdapter<Meta> {
     return Meta(
       nome: fields[0] as String,
       projeto: fields[1] as String,
-      cargaHoraria: fields[2] as String,
-      periodo: fields[3] as String,
-      descricao: fields[4] as String,
-      resultadosEsperados: fields[5] as String,
+      periodo: fields[2] as String,
+      descricao: fields[3] as String,
+      resultadosEsperados: fields[4] as String,
+      cargaHoraria: fields[6] as String,
+      isSemanal: fields[5] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Meta obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.nome)
       ..writeByte(1)
       ..write(obj.projeto)
       ..writeByte(2)
-      ..write(obj.cargaHoraria)
-      ..writeByte(3)
       ..write(obj.periodo)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.descricao)
+      ..writeByte(4)
+      ..write(obj.resultadosEsperados)
       ..writeByte(5)
-      ..write(obj.resultadosEsperados);
+      ..write(obj.isSemanal)
+      ..writeByte(6)
+      ..write(obj.cargaHoraria);
   }
 
   @override
