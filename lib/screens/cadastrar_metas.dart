@@ -40,42 +40,54 @@ class CadastrarMetas extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 130),
 
-            CustomTextField(
-              hintText: 'Nome da Meta',
+            TextField(
               controller: nomeController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Nome da Meta',
+                ),
+              ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              hintText: 'Projeto',
+            TextField(
               controller: projetoController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Projeto',
+                )
+              ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              hintText: 'Carga horária da meta',
+            TextField(
               controller: cargaHorariaController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Carga horária da meta',
+                )
+              ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              hintText: 'Período da Meta',
+            TextField(
               controller: periodoController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Período da Meta',
+                )
+              ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              hintText: 'Descrição da meta',
+            TextField(
               controller: descricaoController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Descrição da meta',
+                )
+              ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              hintText: 'Resultados Esperados',
+            TextField(
               controller: resultadosController,
-            ),
+              decoration: InputDecoration(
+                labelText: 'Resultados Esperados',
+                )
+              ),
             const SizedBox(height: 30),
 
             CustomElevatedButton(
