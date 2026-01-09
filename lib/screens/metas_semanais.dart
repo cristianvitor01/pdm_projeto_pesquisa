@@ -38,7 +38,6 @@ class MetasSemanais extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
 
-                  /// LISTA DE METAS SEMANAIS
                   if (controller.metasSemanais.isEmpty)
                     const Center(
                       child: Text(
@@ -57,8 +56,9 @@ class MetasSemanais extends StatelessWidget {
                           height: 150,
                           progressValue: 0,
                           onTap: () {
-                            debugPrint(
-                              'Abrir detalhes da meta semanal: ${meta.nome}',
+                            Get.toNamed(
+                              Routes.DETALHES_DA_META,
+                              arguments: meta,
                             );
                           },
                         ),
@@ -67,13 +67,12 @@ class MetasSemanais extends StatelessWidget {
 
                   const SizedBox(height: 60),
 
-                  /// BOTÃO NOVA META SEMANAL
                   CustomElevatedButton(
                     text: 'Nova Meta',
                     onPressed: () {
                       Get.toNamed(
                         Routes.CREATE_META,
-                        arguments: true, // <-- semanal
+                        arguments: true,
                       );
                     },
                   ),

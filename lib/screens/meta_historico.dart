@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:pdm_projeto_pesquisa/controllers/check_in_controller.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
-import 'package:get/get.dart';
+import 'package:pdm_projeto_pesquisa/models/check_in_model.dart';
 
 class MetaHistoricoPage extends StatelessWidget {
   const MetaHistoricoPage({super.key});
 
+  String formatarData(DateTime data) {
+    return "${data.day.toString().padLeft(2, '0')}/"
+        "${data.month.toString().padLeft(2, '0')}/"
+        "${data.year}";
+  }
+
   @override
   Widget build(BuildContext context) {
+    final CheckInController controller = Get.find();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -18,7 +29,6 @@ class MetaHistoricoPage extends StatelessWidget {
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
@@ -32,20 +42,26 @@ class MetaHistoricoPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 30),
+            Obx(() {
+              if (controller.checkIns.isEmpty) {
+                return const Text("Nenhum histórico encontrado");
+              }
 
-            HoverHistoryButton(
-              text: "Dia: 20/10/2025",
-              onTap: () {
-                Get.toNamed(Routes.META_HISTORICO_IN_DEPTH);
-              },
-            ),
-
-            HoverHistoryButton(
-              text: "Dia: 22/10/2025",
-              onTap: () {},
-            ),
+              return Column(
+                children: controller.checkIns.map((checkin) {
+                  return HoverHistoryButton(
+                    text: "Dia: ${formatarData(checkin.data)}",
+                    onTap: () {
+                      Get.toNamed(
+                        Routes.META_HISTORICO_IN_DEPTH,
+                        arguments: checkin,
+                      );
+                    },
+                  );
+                }).toList(),
+              );
+            }),
           ],
         ),
       ),
@@ -82,30 +98,24 @@ class _HoverHistoryButtonState extends State<HoverHistoryButton> {
         shadowColor: Colors.black.withOpacity(0.12),
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-
         child: MouseRegion(
           onEnter: (_) => setState(() => _hovering = true),
           onExit: (_) => setState(() => _hovering = false),
           cursor: SystemMouseCursors.click,
-
           child: Material(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(12),
-
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
               onTap: widget.onTap,
-
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   vertical: 18,
                   horizontal: 16,
                 ),
-
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
-
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
