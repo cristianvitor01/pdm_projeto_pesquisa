@@ -12,14 +12,30 @@ class MyApp extends StatelessWidget {
       title: 'Login App',
       theme: ThemeData(
         primaryColor: AppColors.white,
+
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+
         appBarTheme: AppBarTheme(
           backgroundColor: AppColors.green,
           iconTheme: const IconThemeData(color: AppColors.white),
-          titleTextStyle: const TextStyle(color: AppColors.white, fontSize: 25, fontWeight: FontWeight.w600),
+          titleTextStyle: const TextStyle(
+            color: AppColors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       debugShowCheckedModeBanner: false,
-
       initialRoute: Routes.INITIAL,
       getPages: AppPages.pages,
     );
