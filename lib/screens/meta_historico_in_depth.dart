@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:pdm_projeto_pesquisa/models/check_in_model.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 
 class MetaHistoricoInDepthPage extends StatelessWidget {
   const MetaHistoricoInDepthPage({super.key});
+
+  String formatarData(DateTime data) {
+    return "${data.day.toString().padLeft(2, '0')}/"
+        "${data.month.toString().padLeft(2, '0')}/"
+        "${data.year}";
+  }
+
+  String formatarHora(DateTime data) {
+    return "${data.hour.toString().padLeft(2, '0')}:"
+        "${data.minute.toString().padLeft(2, '0')}";
+  }
 
   Widget _infoBox(String text, {double height = 60}) {
     return Container(
@@ -13,7 +27,7 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: AppColors.white, 
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.grey.shade400,
@@ -32,6 +46,8 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CheckInModel checkin = Get.arguments as CheckInModel;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -40,23 +56,16 @@ class MetaHistoricoInDepthPage extends StatelessWidget {
         ),
         backgroundColor: AppColors.green,
       ),
-
       drawer: const AppDrawer(),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 30),
-
-            _infoBox("Data: 20/10/2025"),
-            _infoBox("Horário de Início: 08:12"),
-            _infoBox("Horário de Término: 12:12"),
-            _infoBox("Horas Contabilizadas: 4"),
-
-            _infoBox("Relatório: Pesquisa em Laboratório", height: 120),
+            _infoBox("Data: ${formatarData(checkin.data)}"),
+            _infoBox("Horário de Início: ${formatarHora(checkin.data)}"),
+            _infoBox("Relatório: ${checkin.nome}", height: 120),
           ],
         ),
       ),

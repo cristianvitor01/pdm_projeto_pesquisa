@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
   final bool isLoginStyle;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.controller,
     this.keyboardType = TextInputType.text,
@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.enabled = true,
     this.isLoginStyle = false, // novo parâmetro
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

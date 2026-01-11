@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/controllers/metas_controller.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
-import 'package:pdm_projeto_pesquisa/widgets/card_aviso.dart';
 import 'package:pdm_projeto_pesquisa/widgets/card_meta.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
@@ -12,7 +11,7 @@ import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 class MetasPage extends StatelessWidget {
   MetasPage({super.key});
 
-  final MetasController controller = Get.put(MetasController());
+  final MetasController controller = Get.find<MetasController>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +28,6 @@ class MetasPage extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
 
-            CardAviso(
-              mensagem: 'Acompanhe suas metas cadastradas',
-              width: 400,
-              height: 80,
-            ),
-
-            const SizedBox(height: 30),
-
-            //LISTA REATIVA DE METAS
             Expanded(
               child: Obx(() {
                 if (controller.metas.isEmpty) {

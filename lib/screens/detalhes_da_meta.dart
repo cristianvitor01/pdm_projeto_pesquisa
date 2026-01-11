@@ -8,7 +8,7 @@ import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
 class DetalhesDaMeta extends StatelessWidget {
-  DetalhesDaMeta({super.key});
+  const DetalhesDaMeta({super.key});
 
   Widget _section(String title, String content) {
     return Column(
@@ -45,6 +45,7 @@ class DetalhesDaMeta extends StatelessWidget {
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
@@ -58,12 +59,16 @@ class DetalhesDaMeta extends StatelessWidget {
           ],
         ),
       ),
+
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: CustomElevatedButton(
           text: "Finalizar Meta",
           onPressed: () {
-            Get.toNamed(Routes.FINALIZAR_META);
+            Get.toNamed(
+              Routes.FINALIZAR_META,
+              arguments: meta,
+            );
           },
         ),
       ),

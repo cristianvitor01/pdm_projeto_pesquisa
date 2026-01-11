@@ -27,7 +27,7 @@ class MetaDropdown extends StatelessWidget {
           labelText: 'Meta Relacionada',
           border: OutlineInputBorder(),
         ),
-        value: metaSelecionada.value,
+        initialValue: metaSelecionada.value,
         items: metasController.metas.map((meta) {
           return DropdownMenuItem<Meta>(
             value: meta,

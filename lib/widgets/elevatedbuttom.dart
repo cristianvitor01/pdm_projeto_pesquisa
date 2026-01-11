@@ -14,7 +14,7 @@ class CustomElevatedButton extends StatelessWidget {
   final FontWeight fontWeight;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.backgroundColor = AppColors.green,
@@ -24,7 +24,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.borderRadius = 10,
     this.fontSize = 18,
     this.fontWeight = FontWeight.w800,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

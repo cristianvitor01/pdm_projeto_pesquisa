@@ -56,7 +56,7 @@ class CheckOut extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 15),
                           child: CustomWhiteButton(
-                            text: "${checkin.nome}",
+                            text: checkin.nome,
                             onPressed: () {
                             Get.toNamed(Routes.REALIZAR_CHECK_OUT, arguments: checkin);
                           },
