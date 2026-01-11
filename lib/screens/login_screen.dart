@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart'; // CORRIGIDO
+import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -25,6 +25,17 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 30),
+
+                  // IMAGEM DE LOGIN
+                  Center(
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: 260,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
 
                   const Text(
                     'Login',
@@ -59,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                   CustomElevatedButton(
                     text: 'Entrar',
                     onPressed: () {
-                      Get.toNamed(Routes.HOME); 
+                      Get.toNamed(Routes.HOME);
                       print('entrar pressionado');
                     },
                   ),
@@ -76,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                           print('criar conta');
                         },
                         child: const Text(
-                          'Criar nova conta',
+                          'Não possui uma conta? Criar uma nova conta',
                           style: TextStyle(
                             color: AppColors.gray,
                             fontWeight: FontWeight.bold,

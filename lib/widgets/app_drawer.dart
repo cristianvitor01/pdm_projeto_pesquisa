@@ -14,9 +14,7 @@ class AppDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: AppColors.green,
-              ),
+              decoration: const BoxDecoration(color: AppColors.green),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -24,11 +22,24 @@ class AppDrawer extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 28,
                       backgroundColor: AppColors.white,
-                      child: Icon(Icons.person, color: AppColors.green, size: 32),
+                      child: Icon(
+                        Icons.person,
+                        color: AppColors.green,
+                        size: 32,
+                      ),
                     ),
                   ),
                   SizedBox(width: 12),
-                  Center(child: Text('Nazaré Barbosa', style: TextStyle(color: AppColors.white, fontSize: 18, fontWeight: FontWeight.bold))),
+                  Center(
+                    child: Text(
+                      'Nazaré Barbosa',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -52,7 +63,10 @@ class AppDrawer extends StatelessWidget {
             ),
 
             ListTile(
-              leading: const Icon(Icons.fact_check_rounded, color: AppColors.gray),
+              leading: const Icon(
+                Icons.fact_check_rounded,
+                color: AppColors.gray,
+              ),
               title: const Text('Check-In'),
               onTap: () {
                 Get.back();
@@ -62,7 +76,10 @@ class AppDrawer extends StatelessWidget {
             ),
 
             ListTile(
-              leading: const Icon(Icons.fact_check_rounded, color: AppColors.gray),
+              leading: const Icon(
+                Icons.fact_check_rounded,
+                color: AppColors.gray,
+              ),
               title: const Text('Check-Out'),
               onTap: () {
                 Get.back();
@@ -70,7 +87,10 @@ class AppDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.content_paste_search_outlined, color: AppColors.gray),
+              leading: const Icon(
+                Icons.content_paste_search_outlined,
+                color: AppColors.gray,
+              ),
               title: const Text('Formulário de Coleta'),
               onTap: () {
                 Get.back();
@@ -78,18 +98,15 @@ class AppDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings, color: AppColors.gray),
-              title: const Text('Configurações'),
+              leading: const Icon(Icons.logout, color: AppColors.gray),
+              title: const Text('Sair'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.CREATE_ACCOUNT);
+                Get.toNamed(Routes.INITIAL);
               },
             ),
 
-            
-
             const Spacer(),
-
           ],
         ),
       ),
