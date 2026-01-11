@@ -18,7 +18,6 @@ class FinalizarMeta extends StatefulWidget {
 }
 
 class _FinalizarMetaState extends State<FinalizarMeta> {
-
   String? arquivoPath;
   String? arquivoNome;
 
@@ -30,7 +29,12 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
     meta = Get.arguments as Meta;
   }
 
-  Widget _infoBox(Color color, String text, {double height = 60}) {
+  Widget _infoBox(
+    Color color,
+    String text, {
+    double height = 60,
+    bool withShadow = false,
+  }) {
     return Container(
       width: double.infinity,
       height: height,
@@ -39,6 +43,15 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(12),
+        boxShadow: withShadow
+            ? [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                ),
+              ]
+            : null,
       ),
       alignment: Alignment.centerLeft,
       child: Text(
@@ -79,25 +92,53 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
   void deletarMeta() {
     final controller = Get.find<MetasController>();
 
-    Get.defaultDialog(
-      title: "Confirmar",
-      middleText: "Deseja realmente deletar esta meta?",
-      textConfirm: "Sim",
-      textCancel: "Cancelar",
-      confirmTextColor: Colors.white,
-      onConfirm: () {
-
-        controller.removerMeta(meta);
-
-        Get.back();
-        Get.offAllNamed(Routes.HOME);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Confirmar'),
+          content: const Text('Deseja realmente deletar esta meta?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                controller.removerMeta(meta);
+                Navigator.of(context).pop();
+                Get.offAllNamed(Routes.HOME);
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.red,
+              ),
+              child: const Text('Sim'),
+            ),
+          ],
+        );
       },
     );
   }
 
+  void finalizarMeta() async {
+    if (arquivoPath == null) {
+      Get.snackbar(
+        'Relatório obrigatório',
+        'É necessário anexar um relatório para finalizar a meta',
+        backgroundColor: Colors.red.withOpacity(0.6),
+        colorText: Colors.white,
+      );
+      return;
+    }
+
+    await enviarEmail();
+    Get.offAllNamed(Routes.HOME);
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -107,22 +148,18 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
           children: [
-
             _infoBox(
               AppColors.green.withOpacity(0.25),
               "Em Andamento",
             ),
-
             _infoBox(
               AppColors.lightBlueGray,
               "Data de Vencimento: ${meta.periodo}",
             ),
-
             GestureDetector(
               onTap: selecionarArquivo,
               child: _infoBox(
@@ -131,14 +168,13 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
                     ? "Anexar Relatório DOCX"
                     : "Arquivo: $arquivoNome",
                 height: 120,
+                withShadow: true,
               ),
             ),
-
             const SizedBox(height: 60),
           ],
         ),
       ),
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -162,9 +198,7 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
                 ),
               ),
             ),
-
             const SizedBox(height: 15),
-
             SizedBox(
               width: double.infinity,
               height: 55,
@@ -185,19 +219,12 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
                 ),
               ),
             ),
-
             const SizedBox(height: 15),
-
             SizedBox(
               height: 55,
               child: CustomElevatedButton(
                 text: "Finalizar Meta",
-                onPressed: arquivoPath == null
-                    ? null
-                    : () async {
-                        await enviarEmail();
-                        Get.offAllNamed(Routes.HOME);
-                      },
+                onPressed: finalizarMeta,
               ),
             )
           ],

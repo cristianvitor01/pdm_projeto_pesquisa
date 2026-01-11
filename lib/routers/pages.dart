@@ -25,7 +25,7 @@ class AppPages {
     GetPage(name: Routes.CREATE_META, page: () => CadastrarMetas()),
     GetPage(name: Routes.WEEK_META, page: () => MetasSemanais()),
     GetPage(name: Routes.FORMULARIO_COLETA, page: () => const FormularioDeColeta()),
-    GetPage(name: Routes.NOVO_FORMULARIO, page: () => const NovoFormularioPage()),
+    GetPage(name: Routes.NOVO_FORMULARIO, page: () => NovoFormularioPage()),
     GetPage(name: Routes.HISTORICO_FORMULARIOS, page: () => const HistoricoFormulariosPage()),
     GetPage(name: Routes.CHECK_IN, page: () => const CheckIn()),
     GetPage(name: Routes.CREATE_CHECK_IN, page: () => CreateCheckIn()),
