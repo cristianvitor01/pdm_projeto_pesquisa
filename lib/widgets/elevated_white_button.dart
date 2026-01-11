@@ -11,7 +11,7 @@ class CustomWhiteButton extends StatelessWidget {
   final FontWeight fontWeight;
 
   const CustomWhiteButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.height = 70,
@@ -19,7 +19,7 @@ class CustomWhiteButton extends StatelessWidget {
     this.borderRadius = 12,
     this.fontSize = 16,
     this.fontWeight = FontWeight.bold,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
