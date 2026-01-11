@@ -8,7 +8,7 @@ import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
 class DetalhesDaMeta extends StatelessWidget {
-  DetalhesDaMeta({super.key});
+  const DetalhesDaMeta({super.key});
 
   Widget _section(String title, String content) {
     return Column(

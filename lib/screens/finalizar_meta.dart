@@ -144,8 +144,6 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
-            // DELETAR META
             SizedBox(
               width: double.infinity,
               height: 55,

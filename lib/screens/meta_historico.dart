@@ -5,7 +5,6 @@ import 'package:pdm_projeto_pesquisa/controllers/check_in_controller.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
-import 'package:pdm_projeto_pesquisa/models/check_in_model.dart';
 
 class MetaHistoricoPage extends StatelessWidget {
   const MetaHistoricoPage({super.key});
