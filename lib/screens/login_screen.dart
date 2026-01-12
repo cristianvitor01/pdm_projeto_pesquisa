@@ -4,9 +4,19 @@ import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
+import 'package:pdm_projeto_pesquisa/controllers/auth_controller.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +52,18 @@ class LoginScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w800,
-                      color: AppColors.green,
+                      color: Color.fromARGB(255, 66, 190, 25),
                     ),
                   ),
 
                   const SizedBox(height: 30),
 
-                  // Campo de matrícula
+                  // Campo de e-mail
                   CustomTextField(
-                    hintText: 'Matrícula',
-                    keyboardType: TextInputType.text,
+                    hintText: 'E-mail',
+                    keyboardType: TextInputType.emailAddress,
                     isLoginStyle: true,
+                    controller: emailController,
                   ),
 
                   const SizedBox(height: 20),
@@ -62,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                     hintText: 'Senha',
                     keyboardType: TextInputType.visiblePassword,
                     isLoginStyle: true,
+                    controller: passwordController,
                   ),
 
                   const SizedBox(height: 20),
@@ -69,9 +81,11 @@ class LoginScreen extends StatelessWidget {
                   // Botão de login
                   CustomElevatedButton(
                     text: 'Entrar',
-                    onPressed: () {
-                      Get.toNamed(Routes.HOME);
-                      print('entrar pressionado');
+                    onPressed: () async {
+                      await authController.signIn(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
                     },
                   ),
 
@@ -84,7 +98,6 @@ class LoginScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Get.toNamed(Routes.CREATE_ACCOUNT);
-                          print('criar conta');
                         },
                         child: const Text(
                           'Não possui uma conta? Criar uma nova conta',

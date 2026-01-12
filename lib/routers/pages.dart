@@ -15,18 +15,29 @@ import 'package:pdm_projeto_pesquisa/screens/detalhes_da_meta.dart';
 import 'package:pdm_projeto_pesquisa/screens/finalizar_meta.dart';
 import 'package:pdm_projeto_pesquisa/screens/meta_historico.dart';
 import 'package:pdm_projeto_pesquisa/screens/meta_historico_in_depth.dart';
+import 'package:pdm_projeto_pesquisa/app.dart';
 part 'routers.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
-    GetPage(name: Routes.INITIAL, page: () => LoginScreen()),
+    GetPage(name: Routes.INITIAL, page: () => const AuthWrapper()),
+    GetPage(name: Routes.LOGIN, page: () => LoginScreen()),
     GetPage(name: Routes.HOME, page: () => MetasPage()),
     GetPage(name: Routes.CREATE_ACCOUNT, page: () => CreateAccount()),
     GetPage(name: Routes.CREATE_META, page: () => CadastrarMetas()),
     GetPage(name: Routes.WEEK_META, page: () => MetasSemanais()),
-    GetPage(name: Routes.FORMULARIO_COLETA, page: () => const FormularioDeColeta()),
-    GetPage(name: Routes.NOVO_FORMULARIO, page: () => const NovoFormularioPage()),
-    GetPage(name: Routes.HISTORICO_FORMULARIOS, page: () => const HistoricoFormulariosPage()),
+    GetPage(
+      name: Routes.FORMULARIO_COLETA,
+      page: () => const FormularioDeColeta(),
+    ),
+    GetPage(
+      name: Routes.NOVO_FORMULARIO,
+      page: () => const NovoFormularioPage(),
+    ),
+    GetPage(
+      name: Routes.HISTORICO_FORMULARIOS,
+      page: () => const HistoricoFormulariosPage(),
+    ),
     GetPage(name: Routes.CHECK_IN, page: () => const CheckIn()),
     GetPage(name: Routes.CREATE_CHECK_IN, page: () => CreateCheckIn()),
     GetPage(name: Routes.CHECK_OUT, page: () => const CheckOut()),
@@ -34,6 +45,9 @@ class AppPages {
     GetPage(name: Routes.FINALIZAR_META, page: () => const FinalizarMeta()),
     GetPage(name: Routes.DETALHES_DA_META, page: () => DetalhesDaMeta()),
     GetPage(name: Routes.META_HISTORICO, page: () => const MetaHistoricoPage()),
-    GetPage(name: Routes.META_HISTORICO_IN_DEPTH, page: () => const MetaHistoricoInDepthPage()),
+    GetPage(
+      name: Routes.META_HISTORICO_IN_DEPTH,
+      page: () => const MetaHistoricoInDepthPage(),
+    ),
   ];
 }
