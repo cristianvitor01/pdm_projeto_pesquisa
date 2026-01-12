@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 import 'package:pdm_projeto_pesquisa/models/meta.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
@@ -68,7 +68,7 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
   Future<void> selecionarArquivo() async {
     final result = await FilePicker.platform.pickFiles();
 
-    if (result != null) {
+    if (result != null && result.files.single.path != null) {
       setState(() {
         arquivoPath = result.files.single.path;
         arquivoNome = result.files.single.name;
@@ -77,16 +77,15 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
   }
 
   Future<void> enviarEmail() async {
-    final Uri email = Uri(
-      scheme: 'mailto',
-      path: 'isaaclevi@acad.ifma.edu.br',
-      queryParameters: {
-        'subject': 'Relatório de Meta',
-        'body': 'Segue em anexo o relatório da meta.',
-      },
+    final Email email = Email(
+      body: 'Segue em anexo o relatório da meta.',
+      subject: 'Relatório de Meta',
+      recipients: ['isaaclevi@acad.ifma.edu.br'],
+      attachmentPaths: [arquivoPath!],
+      isHTML: false,
     );
 
-    await launchUrl(email);
+    await FlutterEmailSender.send(email);
   }
 
   void deletarMeta() {
