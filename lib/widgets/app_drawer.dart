@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
+import 'package:pdm_projeto_pesquisa/controllers/auth_controller.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -102,7 +103,7 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Sair'),
               onTap: () {
                 Get.back();
-                Get.toNamed(Routes.INITIAL);
+                Get.find<AuthController>().signOut();
               },
             ),
 

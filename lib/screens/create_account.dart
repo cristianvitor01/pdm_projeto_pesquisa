@@ -4,9 +4,23 @@ import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
 import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
+import 'package:pdm_projeto_pesquisa/controllers/auth_controller.dart';
 
-class CreateAccount extends StatelessWidget {
+class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
+
+  @override
+  _CreateAccountState createState() => _CreateAccountState();
+}
+
+class _CreateAccountState extends State<CreateAccount> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController matriculaController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +51,22 @@ class CreateAccount extends StatelessWidget {
 
                   const SizedBox(height: 30),
 
-                  // Campo de e-mail
+                  // Campo de nome
                   CustomTextField(
                     hintText: 'Nome',
                     keyboardType: TextInputType.text,
                     isLoginStyle: true,
+                    controller: nameController,
                   ),
 
                   const SizedBox(height: 20),
 
-                  // Campo de senha
+                  // Campo de matrícula
                   CustomTextField(
                     hintText: 'Matrícula',
                     keyboardType: TextInputType.text,
                     isLoginStyle: true,
+                    controller: matriculaController,
                   ),
 
                   const SizedBox(height: 20),
@@ -60,6 +76,7 @@ class CreateAccount extends StatelessWidget {
                     hintText: 'E-mail',
                     keyboardType: TextInputType.emailAddress,
                     isLoginStyle: true,
+                    controller: emailController,
                   ),
 
                   const SizedBox(height: 20),
@@ -69,35 +86,43 @@ class CreateAccount extends StatelessWidget {
                     hintText: 'Senha',
                     keyboardType: TextInputType.visiblePassword,
                     isLoginStyle: true,
+                    controller: passwordController,
                   ),
 
                   const SizedBox(height: 20),
 
-                  // Campo de cofirmar senha
+                  // Campo de confirmar senha
                   CustomTextField(
                     hintText: 'Confirmar senha',
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.visiblePassword,
                     isLoginStyle: true,
+                    controller: confirmPasswordController,
                   ),
 
                   const SizedBox(height: 20),
-                  
+
                   CustomElevatedButton(
-                    text: 'Entrar',
-                    onPressed: () {
-                      Get.toNamed(Routes.HOME); 
-                      print('entrar pressionado');
+                    text: 'Criar Conta',
+                    onPressed: () async {
+                      if (passwordController.text ==
+                          confirmPasswordController.text) {
+                        await authController.signUp(
+                          emailController.text.trim(),
+                          passwordController.text.trim(),
+                        );
+                      } else {
+                        Get.snackbar('Erro', 'As senhas não coincidem');
+                      }
                     },
                   ),
                   const SizedBox(height: 30),
-                  // Criar conta
+                  // Já tenho conta
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
                         onPressed: () {
-                          Get.toNamed(Routes.INITIAL); // CORRIGIDO
-                          print('criar conta');
+                          Get.toNamed(Routes.LOGIN);
                         },
                         child: const Text(
                           'Já tenho uma conta',
