@@ -6,7 +6,6 @@ import 'package:pdm_projeto_pesquisa/models/meta.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
-import 'package:pdm_projeto_pesquisa/widgets/textfieldcustom.dart';
 
 class CadastrarMetas extends StatelessWidget {
   CadastrarMetas({super.key});
@@ -61,7 +60,7 @@ class CadastrarMetas extends StatelessWidget {
             TextField(
               controller: cargaHorariaController,
               decoration: InputDecoration(
-                labelText: 'Carga horária da meta',
+                labelText: 'Carga horária da meta (horas)',
                 )
               ),
             const SizedBox(height: 20),
@@ -69,7 +68,7 @@ class CadastrarMetas extends StatelessWidget {
             TextField(
               controller: periodoController,
               decoration: InputDecoration(
-                labelText: 'Período da Meta',
+                labelText: 'Data final da meta',
                 )
               ),
             const SizedBox(height: 20),
