@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "180054913374",
+    "project_id": "pdm-projeto-pesquisa",
+    "storage_bucket": "pdm-projeto-pesquisa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180054913374:android:ba62ba333cddcde5d21fcf",
+        "android_client_info": {
+          "package_name": "com.example.pdm_projeto_pesquisa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180054913374-1rquu2qcvre3vngm5s5usof3uqfobcs6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pdm_projeto_pesquisa",
+            "certificate_hash": "bb079b4c61d181c0b4da961d484ac04c7c6ce92d"
+          }
+        },
+        {
+          "client_id": "180054913374-tq6sa2qq3qgtacsmc7bd4e1e83icrfb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaTOibElL7s820IftUsLeHv0pLc1Ps1Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180054913374-tq6sa2qq3qgtacsmc7bd4e1e83icrfb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
