@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 class LocationService {
   static const double latitudePermitida = -4.819542825582025;
   static const double longitudePermitida = -43.34320473152245;
-  static const double raioPermitidoEmMetros = 300000;
+  static const double raioPermitidoEmMetros = 100;
 
 
 
