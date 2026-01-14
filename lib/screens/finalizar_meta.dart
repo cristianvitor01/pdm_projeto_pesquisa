@@ -220,33 +220,33 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
             ),
             const SizedBox(height: 15),
             SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(Routes.META_HISTORICO);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppColors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text(
-                  "Histórico de Meta",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
+              // width: double.infinity,
+              // height: 55,
+              // child: ElevatedButton(
+              //   onPressed: () {
+              //     Get.toNamed(Routes.META_HISTORICO);
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.white,
+              //     foregroundColor: AppColors.green,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(12),
+              //     ),
+              //   ),
+              //   child: const Text(
+              //     "Histórico de Meta",
+              //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
             ),
-            const SizedBox(height: 15),
             SizedBox(
               height: 55,
               child: CustomElevatedButton(
                 text: "Finalizar Meta",
                 onPressed: finalizarMeta,
               ),
-            )
+            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),
