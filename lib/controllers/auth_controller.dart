@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
 class AuthController extends GetxController {
@@ -14,6 +15,18 @@ class AuthController extends GetxController {
   }
 
   Future<void> signIn(String email, String password) async {
+    if (email.isEmpty) {
+      Get.snackbar('Erro', 'Digite o e-mail.');
+      return;
+    }
+    if (password.isEmpty) {
+      Get.snackbar('Erro', 'Digite a senha.');
+      return;
+    }
+    if (password.length < 6) {
+      Get.snackbar('Erro', 'A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       Get.offAllNamed(Routes.HOME);
@@ -21,10 +34,10 @@ class AuthController extends GetxController {
       String message;
       switch (e.code) {
         case 'user-not-found':
-          message = 'Conta não encontrada. Verifique o e-mail.';
+          message = 'E-mail inválido.';
           break;
         case 'wrong-password':
-          message = 'Senha incorreta.';
+          message = 'Senha inválida.';
           break;
         case 'invalid-email':
           message = 'E-mail inválido.';
@@ -35,29 +48,54 @@ class AuthController extends GetxController {
         default:
           message = 'Erro ao fazer login: ${e.message}';
       }
-      Get.defaultDialog(
-        title: 'Erro',
-        middleText: message,
-        textConfirm: 'OK',
-        onConfirm: () => Get.back(),
-      );
+      Get.snackbar('Erro', message);
     } catch (e) {
-      Get.defaultDialog(
-        title: 'Erro',
-        middleText: 'Erro inesperado: ${e.toString()}',
-        textConfirm: 'OK',
-        onConfirm: () => Get.back(),
-      );
+      Get.snackbar('Erro', 'Erro inesperado: ${e.toString()}');
     }
   }
 
-  Future<void> signUp(String email, String password) async {
+  Future<void> signUp(
+    String email,
+    String password,
+    String name,
+    String matricula,
+  ) async {
+    if (name.isEmpty) {
+      Get.snackbar('Erro', 'Digite o nome.');
+      return;
+    }
+    if (matricula.isEmpty) {
+      Get.snackbar('Erro', 'Digite a matrícula.');
+      return;
+    }
+    if (email.isEmpty) {
+      Get.snackbar('Erro', 'Digite o e-mail.');
+      return;
+    }
+    if (password.isEmpty) {
+      Get.snackbar('Erro', 'Digite a senha.');
+      return;
+    }
+    if (password.length < 6) {
+      Get.snackbar('Erro', 'A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
     try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      Get.offAllNamed(Routes.HOME);
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      // Store additional data in Firestore
+      try {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .set({'name': name, 'matricula': matricula, 'email': email});
+      } catch (e) {
+        // Ignore Firestore errors for now
+        print('Erro ao salvar no Firestore: $e');
+      }
+      await _auth.signOut();
+      Get.offAllNamed(Routes.LOGIN);
+      Get.snackbar('Sucesso', 'Conta criada com sucesso!');
     } on FirebaseAuthException catch (e) {
       String message;
       switch (e.code) {
@@ -73,19 +111,9 @@ class AuthController extends GetxController {
         default:
           message = 'Erro ao criar conta: ${e.message}';
       }
-      Get.defaultDialog(
-        title: 'Erro',
-        middleText: message,
-        textConfirm: 'OK',
-        onConfirm: () => Get.back(),
-      );
+      Get.snackbar('Erro', message);
     } catch (e) {
-      Get.defaultDialog(
-        title: 'Erro',
-        middleText: 'Erro inesperado: ${e.toString()}',
-        textConfirm: 'OK',
-        onConfirm: () => Get.back(),
-      );
+      Get.snackbar('Erro', 'Erro inesperado: ${e.toString()}');
     }
   }
 

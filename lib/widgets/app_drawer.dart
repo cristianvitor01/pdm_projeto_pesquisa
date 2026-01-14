@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/controllers/auth_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -18,8 +20,8 @@ class AppDrawer extends StatelessWidget {
               decoration: const BoxDecoration(color: AppColors.green),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Center(
+                children: [
+                  const Center(
                     child: CircleAvatar(
                       radius: 28,
                       backgroundColor: AppColors.white,
@@ -30,15 +32,81 @@ class AppDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 12),
-                  Center(
-                    child: Text(
-                      'Nazaré Barbosa',
-                      style: TextStyle(
-                        color: AppColors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: StreamBuilder<DocumentSnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(FirebaseAuth.instance.currentUser?.uid)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.white,
+                            ),
+                          );
+                        }
+                        if (snapshot.hasError ||
+                            !snapshot.hasData ||
+                            !snapshot.data!.exists) {
+                          String email =
+                              FirebaseAuth.instance.currentUser?.email ??
+                              'Usuário não logado';
+                          return Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  email,
+                                  style: const TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const Text(
+                                  'Dados não cadastrados',
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        var data =
+                            snapshot.data!.data() as Map<String, dynamic>;
+                        String name = data['name'] ?? 'Nome não encontrado';
+                        String matricula =
+                            data['matricula'] ?? 'Matrícula não encontrada';
+                        return Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                matricula,
+                                style: const TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

@@ -21,6 +21,8 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final AuthController authController = Get.find<AuthController>();
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +86,23 @@ class _CreateAccountState extends State<CreateAccount> {
                   // Campo de senha
                   CustomTextField(
                     hintText: 'Senha',
-                    keyboardType: TextInputType.visiblePassword,
+                    keyboardType: TextInputType.text,
+                    obscureText: _obscurePassword,
                     isLoginStyle: true,
                     controller: passwordController,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: AppColors.gray,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
 
                   const SizedBox(height: 20),
@@ -94,9 +110,23 @@ class _CreateAccountState extends State<CreateAccount> {
                   // Campo de confirmar senha
                   CustomTextField(
                     hintText: 'Confirmar senha',
-                    keyboardType: TextInputType.visiblePassword,
+                    keyboardType: TextInputType.text,
+                    obscureText: _obscureConfirmPassword,
                     isLoginStyle: true,
                     controller: confirmPasswordController,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureConfirmPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: AppColors.gray,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureConfirmPassword = !_obscureConfirmPassword;
+                        });
+                      },
+                    ),
                   ),
 
                   const SizedBox(height: 20),
@@ -109,6 +139,8 @@ class _CreateAccountState extends State<CreateAccount> {
                         await authController.signUp(
                           emailController.text.trim(),
                           passwordController.text.trim(),
+                          nameController.text.trim(),
+                          matriculaController.text.trim(),
                         );
                       } else {
                         Get.snackbar('Erro', 'As senhas não coincidem');
@@ -125,7 +157,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           Get.toNamed(Routes.LOGIN);
                         },
                         child: const Text(
-                          'Já tenho uma conta',
+                          'Voltar para o login',
                           style: TextStyle(
                             color: AppColors.gray,
                             fontWeight: FontWeight.bold,

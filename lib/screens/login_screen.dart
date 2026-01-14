@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final AuthController authController = Get.find<AuthController>();
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +72,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Campo de senha
                   CustomTextField(
                     hintText: 'Senha',
-                    keyboardType: TextInputType.visiblePassword,
+                    keyboardType: TextInputType.text,
+                    obscureText: _obscurePassword,
                     isLoginStyle: true,
                     controller: passwordController,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: AppColors.gray,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
 
                   const SizedBox(height: 20),
@@ -100,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Get.toNamed(Routes.CREATE_ACCOUNT);
                         },
                         child: const Text(
-                          'Não possui uma conta? Criar uma nova conta',
+                          'Não possui uma conta? Cadastre-se aqui',
                           style: TextStyle(
                             color: AppColors.gray,
                             fontWeight: FontWeight.bold,
