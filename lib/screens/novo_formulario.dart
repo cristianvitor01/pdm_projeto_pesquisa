@@ -100,7 +100,7 @@ class _NovoFormularioPageState extends State<NovoFormularioPage> {
     final Email email = Email(
       body: corpoDoEmail,
       subject: 'Formulário de Coleta - ${equipeController.text}',
-      recipients: ['ycarolourenco@acad.ifma.edu.br'],
+      recipients: ['isaaclevi@acad.ifma.edu.br'],
       attachmentPaths: arquivosPaths,
       isHTML: false,
     );
