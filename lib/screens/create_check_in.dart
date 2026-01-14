@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 import 'package:pdm_projeto_pesquisa/controllers/check_in_controller.dart';
 import 'package:pdm_projeto_pesquisa/models/meta.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
@@ -54,6 +54,9 @@ class CreateCheckIn extends StatelessWidget {
 
             GestureDetector(
               onTap: () async {
+
+                localController.text = "Obtendo GPS...";
+
                 bool permitido =
                     await LocationService.estaNoPerimetroPermitido();
 
@@ -98,6 +101,8 @@ class CreateCheckIn extends StatelessWidget {
                     localController.text.isEmpty) {
                   Get.snackbar('Erro', 'Preencha todos os campos');
                   return;
+                }else{
+                  Get.toNamed(Routes.CHECK_IN);
                 }
 
                 bool permitido =
@@ -122,8 +127,6 @@ class CreateCheckIn extends StatelessWidget {
                 nomeController.clear();
                 localController.clear();
                 metaSelecionada.value = null;
-
-                Get.back();
 
                 Get.snackbar(
                   'Sucesso',

@@ -24,6 +24,9 @@ class Meta extends HiveObject {
 
   @HiveField(6)
   String cargaHoraria;
+  
+  @HiveField(7)
+  int segundosCumpridos;
 
   Meta({
     required this.nome,
@@ -33,5 +36,6 @@ class Meta extends HiveObject {
     required this.resultadosEsperados,
     required this.cargaHoraria,
     this.isSemanal = false,
+    this.segundosCumpridos = 0,
   });
 }

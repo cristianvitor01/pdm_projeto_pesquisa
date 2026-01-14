@@ -14,19 +14,32 @@ class MetasSemanais extends StatelessWidget {
   final MetasSemanaisController controller =
       Get.find<MetasSemanaisController>();
 
+  String formatarHoras(int segundos) {
+    final int horas = segundos ~/ 3600;
+    final int minutos = (segundos % 3600) ~/ 60;
+
+    if (horas > 0) {
+    return "Tempo decorrido: ${horas} h ${minutos} min";
+    } else {
+    return "Tempo decorrido: ${minutos} min";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Metas semanais',
+          'Metas da Semana',
           style: TextStyle(color: AppColors.white),
         ),
         backgroundColor: AppColors.green,
       ),
       drawer: const AppDrawer(),
-      body: Obx(
-        () => SingleChildScrollView(
+      body: Obx(() {
+        final listaDeMetas = controller.metasSemanais;
+
+        return SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: MediaQuery.of(context).size.height,
@@ -36,25 +49,40 @@ class MetasSemanais extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 250),
 
-                  if (controller.metasSemanais.isEmpty)
+                  if (listaDeMetas.isEmpty)
                     const Center(
                       child: Text(
-                        'Nenhuma meta semanal cadastrada',
+                        'Nenhuma meta para os próximos 7 dias',
                         style: TextStyle(fontSize: 16),
                       ),
                     )
                   else
-                    ...controller.metasSemanais.map(
-                      (meta) => Padding(
+                    ...listaDeMetas.map((meta) {
+                      final String horasTexto =
+                          formatarHoras(meta.segundosCumpridos);
+
+                      double progresso = 0.0;
+                      final double cargaHoras =
+                          double.tryParse(meta.cargaHoraria) ?? 0;
+
+                      if (cargaHoras > 0) {
+                        progresso =
+                            meta.segundosCumpridos / (cargaHoras * 3600);
+                      }
+
+                      if (progresso > 1.0) progresso = 1.0;
+
+                      return Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: CardMeta(
                           title: meta.nome,
+                          subtitle: horasTexto,
                           deadline: meta.periodo,
                           width: 400,
                           height: 150,
-                          progressValue: 0,
+                          progressValue: progresso,
                           onTap: () {
                             Get.toNamed(
                               Routes.DETALHES_DA_META,
@@ -62,28 +90,28 @@ class MetasSemanais extends StatelessWidget {
                             );
                           },
                         ),
-                      ),
-                    ),
+                      );
+                    }).toList(),
 
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 180),
 
                   CustomElevatedButton(
                     text: 'Nova Meta',
                     onPressed: () {
                       Get.toNamed(
                         Routes.CREATE_META,
-                        arguments: true,
+                        arguments: true, // semanal
                       );
                     },
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                 ],
               ),
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

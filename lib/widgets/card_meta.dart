@@ -3,6 +3,7 @@ import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 
 class CardMeta extends StatelessWidget {
   final String title;
+  final String subtitle;
   final String deadline;
   final double progressValue;
   final VoidCallback? onTap;
@@ -14,6 +15,7 @@ class CardMeta extends StatelessWidget {
   const CardMeta({
     super.key,
     required this.title,
+    required this.subtitle,
     required this.deadline,
     required this.progressValue,
     this.onTap,
@@ -39,9 +41,7 @@ class CardMeta extends StatelessWidget {
           padding: padding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
-              // 1. Título e Ícone de Navegação
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -63,36 +63,35 @@ class CardMeta extends StatelessWidget {
                   ),
                 ],
               ),
-              
-              const SizedBox(height: 8),
 
-              // 2. Subtítulo (Horas)
-              const Text(
-                'Horas',
-                style: TextStyle(
+              const SizedBox(height: 8),
+              
+              Text(
+                subtitle,
+                style: const TextStyle(
                   color: AppColors.darkBlue,
                   fontSize: 14,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-  
+
               const SizedBox(height: 12),
 
-              // 3. Barra de Progresso
+              // BARRA DE PROGRESSO
               ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: LinearProgressIndicator(
-                  value: progressValue.clamp(0.0, 1.0), 
-                  backgroundColor: AppColors.lightGreen,
+                  value: progressValue.clamp(0.0, 1.0),
+                  backgroundColor: AppColors.lightGreen.withOpacity(0.3),
                   valueColor: const AlwaysStoppedAnimation<Color>(
-                    AppColors.lightGreen,
+                    AppColors.green,
                   ),
-                  minHeight: 8, // Altura da barra
+                  minHeight: 8,
                 ),
               ),
 
               const SizedBox(height: 12),
 
-              // 4. Data Limite
               Text(
                 'Finalizar até o dia $deadline',
                 style: const TextStyle(

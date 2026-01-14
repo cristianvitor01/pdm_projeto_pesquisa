@@ -24,6 +24,7 @@ class FormularioDeColeta extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
+            
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomElevatedButton(
@@ -35,12 +36,12 @@ class FormularioDeColeta extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              CustomWhiteButton(
-                text: 'Histórico de Formulários',
-                onPressed: () {
-                  Get.toNamed(Routes.HISTORICO_FORMULARIOS);
-                },
-              ),
+              // CustomWhiteButton(
+              //   text: 'Histórico de Formulários',
+              //   onPressed: () {
+              //     Get.toNamed(Routes.HISTORICO_FORMULARIOS);
+              //   },
+              // ),
             ],
           ),
         ),

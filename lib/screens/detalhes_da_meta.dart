@@ -9,6 +9,18 @@ import 'package:pdm_projeto_pesquisa/routers/pages.dart';
 
 class DetalhesDaMeta extends StatelessWidget {
   const DetalhesDaMeta({super.key});
+  
+
+    String formatarHoras(int segundos) {
+    final horas = segundos ~/ 3600;
+    final minutos = (segundos % 3600) ~/ 60;
+
+    if (horas > 0) {
+      return "${horas}h ${minutos}min";
+    } else {
+      return "${minutos}min";
+    }
+  }
 
   Widget _section(String title, String content) {
     return Column(
@@ -36,6 +48,17 @@ class DetalhesDaMeta extends StatelessWidget {
   Widget build(BuildContext context) {
     final Meta meta = Get.arguments as Meta;
 
+    final String horasDecorridas = formatarHoras(meta.segundosCumpridos);
+
+    final double cargaHoras = double.tryParse(meta.cargaHoraria) ?? 0;
+
+    double progresso = 0;
+    if (cargaHoras > 0) {
+      progresso = (meta.segundosCumpridos / (cargaHoras * 3600)) * 100;
+      if (progresso > 100) progresso = 100;
+    }
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -54,6 +77,15 @@ class DetalhesDaMeta extends StatelessWidget {
             _section("Nome da Meta", meta.nome),
             _section("Projeto", meta.projeto),
             _section("Período", meta.periodo),
+            _section("Horas decorridas", horasDecorridas),
+            _section(
+              "Carga Horária Total",
+              "${cargaHoras.toStringAsFixed(1)}h",
+            ),
+            _section(
+              "Progresso",
+              "${progresso.toStringAsFixed(1)}%",
+            ),            
             _section("Descrição da Meta", meta.descricao),
             _section("Resultados Esperados", meta.resultadosEsperados),
           ],

@@ -13,6 +13,17 @@ class MetasPage extends StatelessWidget {
 
   final MetasController controller = Get.find<MetasController>();
 
+  String formatarHoras(int segundos) {
+    final int horas = segundos ~/ 3600;
+    final int minutos = (segundos % 3600) ~/ 60;
+
+    if (horas > 0) {
+    return "Tempo decorrido: ${horas} h ${minutos} min";
+    } else {
+    return "Tempo decorrido: ${minutos} min";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +37,7 @@ class MetasPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 250),
 
             Expanded(
               child: Obx(() {
@@ -41,14 +52,29 @@ class MetasPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final meta = controller.metas[index];
 
+                    final String horasTexto =
+                        formatarHoras(meta.segundosCumpridos);
+
+                    double progresso = 0.0;
+                    final double cargaHoras =
+                        double.tryParse(meta.cargaHoraria) ?? 0;
+
+                    if (cargaHoras > 0) {
+                      progresso =
+                          meta.segundosCumpridos / (cargaHoras * 3600);
+                    }
+
+                    if (progresso > 1.0) progresso = 1.0;
+
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: CardMeta(
                         title: meta.nome,
+                        subtitle: horasTexto,
                         deadline: meta.periodo,
                         width: 400,
                         height: 150,
-                        progressValue: 0,
+                        progressValue: progresso,
                         onTap: () {
                           Get.toNamed(
                             Routes.DETALHES_DA_META,
@@ -62,8 +88,6 @@ class MetasPage extends StatelessWidget {
               }),
             ),
 
-            const SizedBox(height: 10),
-
             CustomElevatedButton(
               text: 'Nova Meta',
               onPressed: () {
@@ -74,7 +98,7 @@ class MetasPage extends StatelessWidget {
               },
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 70),
           ],
         ),
       ),

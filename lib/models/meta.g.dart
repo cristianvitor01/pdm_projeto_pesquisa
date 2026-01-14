@@ -24,13 +24,14 @@ class MetaAdapter extends TypeAdapter<Meta> {
       resultadosEsperados: fields[4] as String,
       cargaHoraria: fields[6] as String,
       isSemanal: fields[5] as bool,
+      segundosCumpridos: fields[7] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, Meta obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.nome)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class MetaAdapter extends TypeAdapter<Meta> {
       ..writeByte(5)
       ..write(obj.isSemanal)
       ..writeByte(6)
-      ..write(obj.cargaHoraria);
+      ..write(obj.cargaHoraria)
+      ..writeByte(7)
+      ..write(obj.segundosCumpridos);
   }
 
   @override

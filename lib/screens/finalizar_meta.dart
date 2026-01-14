@@ -75,12 +75,33 @@ class _FinalizarMetaState extends State<FinalizarMeta> {
       });
     }
   }
-
+  
   Future<void> enviarEmail() async {
+
+    String corpoDoEmail = '''
+      Olá,
+
+      Segue em anexo o relatório da meta finalizada.
+
+      DETALHES DA META:
+      ------------------------------------------------
+      Nome: ${meta.nome}
+      Projeto: ${meta.projeto}
+      Período: ${meta.periodo}
+      Carga Horária: ${meta.cargaHoraria}h
+
+      Descrição:
+      ${meta.descricao}
+
+      Resultados Esperados:
+      ${meta.resultadosEsperados}
+      ------------------------------------------------
+      ''';
     final Email email = Email(
-      body: 'Segue em anexo o relatório da meta.',
-      subject: 'Relatório de Meta',
-      recipients: ['isaaclevi@acad.ifma.edu.br'],
+      body: corpoDoEmail, 
+      subject: 'Relatório de Meta: ${meta.nome}',
+      // recipients: ['isaaclevi@acad.ifma.edu.br'],
+      recipients: ['ycarolourenco@acad.ifma.edu.br'],
       attachmentPaths: [arquivoPath!],
       isHTML: false,
     );

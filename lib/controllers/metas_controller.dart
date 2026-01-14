@@ -31,4 +31,24 @@ class MetasController extends GetxController {
     meta.delete();
     metas.removeAt(index);
   }
+
+
+  void contabilizarTempo(String nomeDaMeta, int segundos) {
+    try {
+      final index = metas.indexWhere((m) => m.nome == nomeDaMeta);
+
+      if (index != -1) {
+        var meta = metas[index];
+
+        meta.segundosCumpridos += segundos;
+        
+        meta.save();
+        
+        metas.refresh();
+        print("Tempo adicionado: $segundos segundos na meta ${meta.nome}");
+      }
+    } catch (e) {
+      print("Erro ao contabilizar tempo: $e");
+    }
+  }
 }

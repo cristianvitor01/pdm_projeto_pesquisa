@@ -32,11 +32,38 @@ class MetasSemanaisController extends GetxController {
   }
 
   void _carregarMetasSemanais() {
-    metasSemanais.value =
-        _box.values.where((meta) => meta.isSemanal).toList();
+    metasSemanais.value = _box.values
+        .where((meta) => faltaUmaSemana(meta.periodo))
+        .toList();
   }
 
   void atualizar() {
     _carregarMetasSemanais();
   }
+
+
+  bool faltaUmaSemana(String? dataFinal) {
+    if (dataFinal == null || dataFinal.isEmpty) return false;
+
+    try {
+      final partes = dataFinal.split('/');
+      if (partes.length != 3) return false;
+
+      final dia = int.parse(partes[0]);
+      final mes = int.parse(partes[1]);
+      final ano = int.parse(partes[2]);
+
+      final agora = DateTime.now();
+      
+      final hoje = DateTime(agora.year, agora.month, agora.day);
+      final dataMeta = DateTime(ano, mes, dia);
+
+      final diferenca = dataMeta.difference(hoje).inDays;
+
+      return diferenca >= 0 && diferenca <= 7;
+    } catch (e) {
+      return false;
+    }
+  }
+
 }

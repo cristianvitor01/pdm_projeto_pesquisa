@@ -6,11 +6,11 @@ import 'package:pdm_projeto_pesquisa/models/meta.dart';
 import 'package:pdm_projeto_pesquisa/utils/app_colors.dart';
 import 'package:pdm_projeto_pesquisa/widgets/app_drawer.dart';
 import 'package:pdm_projeto_pesquisa/widgets/elevatedbuttom.dart';
+import 'package:flutter/services.dart';
 
 class CadastrarMetas extends StatelessWidget {
   CadastrarMetas({super.key});
 
-  // Controllers dos campos
   final nomeController = TextEditingController();
   final projetoController = TextEditingController();
   final cargaHorariaController = TextEditingController();
@@ -18,7 +18,6 @@ class CadastrarMetas extends StatelessWidget {
   final descricaoController = TextEditingController();
   final resultadosController = TextEditingController();
 
-  // Controller de metas
   final MetasController metasController = Get.find<MetasController>();
 
   @override
@@ -59,6 +58,10 @@ class CadastrarMetas extends StatelessWidget {
 
             TextField(
               controller: cargaHorariaController,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],              
               decoration: InputDecoration(
                 labelText: 'Carga horária da meta (horas)',
                 )
@@ -67,10 +70,27 @@ class CadastrarMetas extends StatelessWidget {
 
             TextField(
               controller: periodoController,
-              decoration: InputDecoration(
+              readOnly: true,
+              decoration: const InputDecoration(
                 labelText: 'Data final da meta',
-                )
               ),
+              onTap: () async {
+                DateTime? data = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime(2100),
+                );
+
+                if (data != null) {
+                  periodoController.text =
+                      '${data.day.toString().padLeft(2, '0')}/'
+                      '${data.month.toString().padLeft(2, '0')}/'
+                      '${data.year}';
+                }
+              },
+            ),
+
             const SizedBox(height: 20),
 
             TextField(
@@ -104,7 +124,7 @@ class CadastrarMetas extends StatelessWidget {
 
                 metasController.adicionarMeta(meta);
 
-                Get.back(); // volta para a tela anterior
+                Get.back();
               },
             ),
 
